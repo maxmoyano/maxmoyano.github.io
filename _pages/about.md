@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Acerca de mi"
+title: "Maximiliano Moyano"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
