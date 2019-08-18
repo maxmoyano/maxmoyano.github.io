@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Maximiliano Moyano / Personal Page"
+title                    : "Maximiliano Moyano"
 title_separator          : "-"
 name                     : &name "Max"
 description              : &description "Chilean Astronomer"
