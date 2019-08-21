@@ -2,6 +2,8 @@
 main:
   - title: "Personal"
     url: /portfolio/
+  - title: "Research"
+    url: /markdown/
   - title: "CV"
     url: /cv/
   - title: "Publications"
@@ -12,5 +14,3 @@ main:
     url: /talks/  
   - title: "Outreach"
     url: /year-archive/
-  - title: "Guide"
-    url: /markdown/
