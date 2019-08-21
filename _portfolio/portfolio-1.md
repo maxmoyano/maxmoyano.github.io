@@ -1,7 +1,6 @@
 ---
 title: "My Personal Life"
-excerpt: "Fitness" <br/>
-<img src='/images/500x300.png'>"
+excerpt: "Fitness <br/> <img src='/images/500x300.png'>"
 collection: Personal Life
 ---
 
