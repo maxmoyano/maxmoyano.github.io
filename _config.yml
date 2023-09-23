@@ -103,7 +103,7 @@ author:
   impactstory      : 
   lastfm           :
   linkedin         : "maxmoyano"
-  orcid            : 0000-0002-7927-9555
+  orcid            : "https://orcid.org/0000-0002-7927-9555"
   pinterest        :
   soundcloud       :
   stackoverflow    : 
@@ -115,6 +115,7 @@ author:
   xing             :
   youtube          :
   wikipedia        :
+  ads              :"https://bit.ly/3eiMJ5u"
 
 
 # Reading Files
