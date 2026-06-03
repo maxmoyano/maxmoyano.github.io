@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maximiliano Moyano — PhD Astronomer</title>
+    <meta name="description" content="PhD Astronomer specializing in exoplanets, low-mass stars, and stellar activity at Universidad Católica del Norte, Chile.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg:       #080c14;
+            --bg-alt:   #0d1421;
+            --text:     #c9d1e0;
+            --muted:    #7a8aaa;
+            --heading:  #ffffff;
+            --accent:   #4fa8d5;
+            --border:   rgba(255,255,255,0.08);
+            --max-w:    1100px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            font-size: 16px;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.25rem 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s, border-color 0.3s;
+            border-bottom: 1px solid transparent;
+        }
+        nav.scrolled {
+            background: rgba(8,12,20,0.92);
+            backdrop-filter: blur(12px);
+            border-color: var(--border);
+        }
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            color: var(--heading);
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+            text-decoration: none;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+        nav ul a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+        nav ul a:hover { color: var(--accent); }
+
+        /* ── HERO ── */
+        #hero {
+            height: 100vh;
+            min-height: 640px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('images/background.png');
+            background-size: cover;
+            background-position: center 40%;
+            filter: brightness(0.55);
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(8,12,20,0.15) 0%,
+                rgba(8,12,20,0.05) 40%,
+                rgba(8,12,20,0.75) 100%
+            );
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 0 1.5rem;
+        }
+        .hero-label {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1.25rem;
+        }
+        .hero-content h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.75rem, 7vw, 5rem);
+            font-weight: 700;
+            color: var(--heading);
+            line-height: 1.05;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.01em;
+        }
+        .hero-tagline {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+        .scroll-cue {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--muted);
+            animation: float 2.4s ease-in-out infinite;
+        }
+        .scroll-cue svg { width: 22px; opacity: 0.5; }
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50%       { transform: translateX(-50%) translateY(8px); }
+        }
+
+        /* ── SHARED SECTION STYLES ── */
+        section { padding: 7rem 2rem; }
+        section:nth-child(even) { background: var(--bg-alt); }
+        .container { max-width: var(--max-w); margin: 0 auto; }
+
+        .eyebrow {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 600;
+            color: var(--heading);
+            margin-bottom: 3rem;
+            line-height: 1.2;
+        }
+
+        /* ── ABOUT ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 230px 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+        .about-photo {
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            border: 2px solid var(--border);
+            box-shadow: 0 0 50px rgba(79,168,213,0.12);
+            display: block;
+        }
+        .about-text p { margin-bottom: 1.25rem; line-height: 1.85; }
+        .about-text strong { color: var(--heading); font-weight: 500; }
+        .side-note {
+            margin-top: 1.75rem;
+            font-size: 0.875rem;
+            color: var(--muted);
+            border-left: 2px solid var(--accent);
+            padding-left: 1rem;
+            line-height: 1.6;
+        }
+
+        /* ── RESEARCH ── */
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+        .card {
+            background: rgba(255,255,255,0.025);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: border-color 0.25s, background 0.25s;
+        }
+        .card:hover {
+            border-color: rgba(79,168,213,0.25);
+            background: rgba(79,168,213,0.04);
+        }
+        .card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--heading);
+            margin-bottom: 0.6rem;
+        }
+        .card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+        .stats-row {
+            display: flex;
+            gap: 3rem;
+            padding: 1.75rem 2rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .stat-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+        .stat-lbl {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 0.2rem;
+        }
+
+        .tags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2.25rem; }
+        .tag {
+            padding: 0.35rem 0.85rem;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.78rem;
+            color: var(--muted);
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.04em;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.65rem 1.5rem;
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.05em;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn:hover { background: var(--accent); color: var(--bg); }
+
+        /* ── TEACHING ── */
+        .course-list { list-style: none; }
+        .course-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 0;
+            border-bottom: 1px solid var(--border);
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .course-list li:last-child { border-bottom: none; }
+        .course-left { display: flex; align-items: center; gap: 0.75rem; }
+        .course-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
+            color: var(--heading);
+            font-size: 0.95rem;
+        }
+        .level-badge {
+            font-size: 0.7rem;
+            color: var(--accent);
+            padding: 0.2rem 0.6rem;
+            border: 1px solid rgba(79,168,213,0.3);
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .course-period { font-size: 0.8rem; color: var(--muted); white-space: nowrap; }
+
+        /* ── OUTREACH ── */
+        .outreach-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+        .outreach-card {
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+        .outreach-year {
+            font-size: 0.72rem;
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            margin-bottom: 0.4rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .outreach-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--heading);
+            margin-bottom: 0.5rem;
+        }
+        .outreach-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+
+        /* ── CONTACT ── */
+        #contact { text-align: center; }
+        #contact h2 { margin-bottom: 1rem; }
+        .contact-sub {
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+        .contact-email {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.15rem;
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        .contact-email:hover { border-color: var(--accent); }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .contact-link {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+            padding: 0.5rem 1.1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.04em;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .contact-link:hover { color: var(--accent); border-color: rgba(79,168,213,0.3); }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 1.75rem 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 800px) {
+            .about-grid        { grid-template-columns: 1fr; gap: 2.5rem; }
+            .about-photo       { margin: 0 auto; }
+            .topic-grid        { grid-template-columns: 1fr; }
+            .outreach-grid     { grid-template-columns: 1fr; }
+            nav ul             { gap: 1.25rem; }
+            .stats-row         { gap: 2rem; }
+        }
+        @media (max-width: 500px) {
+            nav ul             { display: none; }
+            .course-list li    { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <a class="nav-logo" href="#hero">M. Moyano</a>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#outreach">Outreach</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <p class="hero-label">PhD Astronomer &nbsp;·&nbsp; Antofagasta, Chile</p>
+        <h1>Maximiliano Moyano</h1>
+        <p class="hero-tagline">Exploring worlds beyond our solar system</p>
+    </div>
+    <div class="scroll-cue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="container">
+        <p class="eyebrow">About</p>
+        <h2>The Astronomer</h2>
+        <div class="about-grid">
+            <div>
+                <img class="about-photo" src="images/photo.png" alt="Maximiliano Moyano">
+            </div>
+            <div class="about-text">
+                <p>I am a PhD Astronomer and Associate Professor at the <strong>Instituto de Astronomía, Universidad Católica del Norte</strong>, in Antofagasta, Chile, where I currently serve as Director. My research focuses on the detection and characterization of exoplanets, low-mass stars, and stellar activity, using data from world-class facilities including ALMA, TESS, and the Next Generation Transit Survey (NGTS).</p>
+                <p>I completed my doctoral training at the International Max Planck Research School for Astronomy and Cosmic Physics at the University of Heidelberg, receiving my degree <em>Magna Cum Laude</em> in 2011. Since returning to Chile, my work has combined observational research with a strong commitment to training the next generation of astronomers and communicating science to the public.</p>
+                <p class="side-note">Outside research, I am interested in science communication, technology, and game development.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+    <div class="container">
+        <p class="eyebrow">Research</p>
+        <h2>Scientific Work</h2>
+
+        <div class="topic-grid">
+            <div class="card">
+                <h3>Exoplanets</h3>
+                <p>Detection and characterization of planets orbiting other stars, with a focus on warm giants and precision transit photometry.</p>
+            </div>
+            <div class="card">
+                <h3>Low-Mass Stars</h3>
+                <p>Discovery and characterization of very low-mass stars and objects near the hydrogen-burning limit using photometric and spectroscopic techniques.</p>
+            </div>
+            <div class="card">
+                <h3>Stellar Activity</h3>
+                <p>Study of stellar activity and its influence on the precision and reliability of exoplanet detection and characterization.</p>
+            </div>
+        </div>
+
+        <div class="stats-row">
+            <div>
+                <div class="stat-num">22</div>
+                <div class="stat-lbl">H-index</div>
+            </div>
+            <div>
+                <div class="stat-num">13+</div>
+                <div class="stat-lbl">Years at UCN</div>
+            </div>
+            <div>
+                <div class="stat-num">10+</div>
+                <div class="stat-lbl">Theses supervised</div>
+            </div>
+        </div>
+
+        <div class="tags">
+            <span class="tag">ALMA</span>
+            <span class="tag">TESS</span>
+            <span class="tag">NGTS</span>
+            <span class="tag">VLT</span>
+            <span class="tag">JULIET</span>
+            <span class="tag">ELEANOR</span>
+            <span class="tag">CERES</span>
+            <span class="tag">BLS</span>
+        </div>
+
+        <a href="https://orcid.org/0000-0002-7927-9555" target="_blank" class="btn">Publications &rarr; ORCID</a>
+    </div>
+</section>
+
+<!-- TEACHING -->
+<section id="teaching">
+    <div class="container">
+        <p class="eyebrow">Teaching</p>
+        <h2>Courses</h2>
+        <ul class="course-list">
+            <li>
+                <div class="course-left">
+                    <span class="course-name">Introduction to Astronomy</span>
+                    <span class="level-badge">Undergraduate</span>
+                </div>
+                <span class="course-period">2021 — present</span>
+            </li>
+            <li>
+                <div class="course-left">
+                    <span class="course-name">Extrasolar Planets</span>
+                    <span class="level-badge">Undergraduate</span>
+                </div>
+                <span class="course-period">2016 — 2023</span>
+            </li>
+            <li>
+                <div class="course-left">
+                    <span class="course-name">Astrophysics 1</span>
+                    <span class="level-badge">Undergraduate</span>
+                </div>
+                <span class="course-period">2018 — 2020</span>
+            </li>
+            <li>
+                <div class="course-left">
+                    <span class="course-name">Practical Astronomy</span>
+                    <span class="level-badge">Graduate</span>
+                </div>
+                <span class="course-period">2017 — 2018</span>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- OUTREACH -->
+<section id="outreach">
+    <div class="container">
+        <p class="eyebrow">Outreach</p>
+        <h2>Science Communication</h2>
+        <div class="outreach-grid">
+            <div class="outreach-card">
+                <div class="outreach-year">2017</div>
+                <h3>BBC Documentary — Stephen Hawking</h3>
+                <p>Scientific support for <em>Expedition to a New Earth</em>, exploring the search for a habitable planet beyond our solar system.</p>
+            </div>
+            <div class="outreach-card">
+                <div class="outreach-year">2013 — 2017</div>
+                <h3>UNESCO Starlight Certification</h3>
+                <p>Technical lead and astronomical advisor for the Starlight Certification of the Antofagasta region skies, sponsored by UNESCO.</p>
+            </div>
+            <div class="outreach-card">
+                <div class="outreach-year">2013 — 2014</div>
+                <h3>Educational TV — Tatai descubre el Universo</h3>
+                <p>Scientific coordinator for the children's astronomy series broadcast on national television in Chile.</p>
+            </div>
+            <div class="outreach-card">
+                <div class="outreach-year">2011 — present</div>
+                <h3>Public Engagement</h3>
+                <p>Regular public talks, planetarium sessions, school visits, science fairs, newspaper articles, and TV interviews on astronomy and space science.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h2>Get in Touch</h2>
+        <p class="contact-sub">Open to collaborations, media requests, and public engagement.</p>
+        <a href="mailto:mmoyano@ucn.cl" class="contact-email">mmoyano@ucn.cl</a>
+        <div class="contact-links">
+            <a href="https://orcid.org/0000-0002-7927-9555" target="_blank" class="contact-link">ORCID</a>
+            <a href="https://www.researchgate.net/profile/Maximiliano-Moyano" target="_blank" class="contact-link">ResearchGate</a>
+            <a href="https://www.linkedin.com/in/maxmoyano" target="_blank" class="contact-link">LinkedIn</a>
+            <a href="https://github.com/maxmoyano" target="_blank" class="contact-link">GitHub</a>
+            <a href="https://twitter.com/doctorgladiador" target="_blank" class="contact-link">Twitter / X</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 Maximiliano Moyano &nbsp;·&nbsp; Universidad Católica del Norte &nbsp;·&nbsp; Antofagasta, Chile</p>
+</footer>
+
+<script>
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+</script>
+
+</body>
+</html>
